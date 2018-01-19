@@ -1,0 +1,65 @@
+.item {
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    position: relative; //  border:1px solid red;
+    .end {
+        height: 13px;
+        width: 13px;
+        border-radius: 43%;
+        line-height: 13px;
+        text-align: center;
+        .icon-duihao {
+            font-size: 12px;
+            color: #b21551;
+            font-weight: 800;
+        }
+    }
+    .endf {
+         border: 1px solid #aaa9a5;
+        // border: 1px solid rgb(36, 21, 21);
+    }
+    .endt {
+         border: 1px solid #f7518f;
+        // border: 1px solid rgb(46, 38, 38);
+        background: #f7518f;
+    }
+    .info {
+        margin-left: 8px;
+        color: #3c3931;
+        flex: 1;
+        margin-right: 30%;
+        padding-top: 1px;
+       
+        /*要显示文字的宽度*/
+        overflow: hidden;
+        /*超出的部分隐藏起来。*/
+        white-space: nowrap;
+        /*不显示的地方用省略号...代替*/
+        text-overflow: ellipsis;
+        /* 支持 IE */
+    }
+    .f {
+        text-decoration: line-through;
+        color: #aaa9a5;
+    }
+    .detail {
+        position: absolute;
+        right: 6px;
+        margin-right: 4px;
+        .ii {
+            font-size: 15px;
+            color: #aaa9a5;
+        }
+        i:nth-child(2) {
+            font-weight: 600;
+            margin-left: 2px;
+        }
+    }
+    .in {
+        height: 15px;
+        width: 30px;
+        line-height: 15px;
+        font-size: 12px;
+    }
+}
