@@ -9,6 +9,11 @@ export default class extends Component {
         }
     }
 
+
+    componentDidMount(){
+        console.log(this.props)
+    }
+
     change(e) {
         if (e.target.value.length > 0) {
             this.setState({
@@ -25,7 +30,7 @@ export default class extends Component {
         if (e.which === 13) {
             const text = e.target.value.trim()
            
-            this.props.AddActions.addTodo(text)
+            this.props.actions.addTodo(text)
             e.target.value = null
             this.setState({
                 len: false
@@ -35,7 +40,7 @@ export default class extends Component {
     }
 
     handleClick(e){
-        this.props.AddActions.addTodo(e.target.value)
+        this.props.actions.addTodo(e.target.value)
         e.target.value = null
         this.setState({
             len: false

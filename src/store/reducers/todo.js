@@ -2,24 +2,12 @@ import * as types from '../action-types.js'
 
 let initState = [{
         text: 'Use Redux',
-        completed: true,
-        id: 0,
-        time: 0,
-        child: {}
-    }, {
-        text: 'Use Redux',
         completed: false,
         id: 0,
         time: 0,
         child: {}
-    },
-    {
-        text: 'Use Reduxzhang张红伟张红伟，张红伟张红伟，张红伟张红伟，张红伟张红伟',
-        completed: true,
-        id: 0,
-        time: 0,
-        child: {}
-    }
+    }, 
+   
 ]
 
 export default function todos(state = initState, action) {
@@ -28,10 +16,20 @@ export default function todos(state = initState, action) {
             return [...state, {
                 text: action.text,
                 completed: false,
-                id: 0,
+                id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
                 time: 0,
                 child: {}
             }];
+        case types.DELETE_TODO:
+            return state.filter(todo => {
+                return todo.id !== action.id
+            });
+        case types.COMPLETE_TODO:
+            return state.map(todo => (
+                todo.id == action.id ? { ...todo,
+                    completed: !todo.completed
+                } : todo
+            ))
         default:
             return state;
     }

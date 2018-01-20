@@ -14,8 +14,17 @@ import { connect } from 'react-redux';
 
 class Home extends Component {
 
-
+componentDidMount(){
+   console.log('====================================');
+// console.log(this.sum())
+   console.log('====================================');
+}
   
+
+
+
+    
+
 handle(){
     console.log(112)
 }
@@ -25,18 +34,18 @@ handle(){
             <div>
                 <Header />
                 <div className="tw">
-                    <Counter />
+                    <Counter counter = {this.props.todo} />
                     <Search />
                 </div>
                 <ul
                     className="items">
                     {this.props.todo.map((item, index) => (
-                        <Item key={index} text={item} />
+                        <Item actions = {this.props.actions} key={index} text={item} />
                     ))}
                 </ul>
                 <div className="foot">
                     <Add />
-                    <Input AddActions={this.props.AddActions} />
+                    <Input actions={this.props.actions} />
                 </div>
             </div>
         )
@@ -45,7 +54,7 @@ handle(){
 
 
 const mapDispatchToProps = dispatch => ({
-    AddActions: bindActionCreators(todoActions, dispatch)
+    actions: bindActionCreators(todoActions, dispatch)
 })
 
 export default connect(
