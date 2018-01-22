@@ -16,7 +16,7 @@ class Home extends Component {
 
 componentDidMount(){
    console.log('====================================');
-// console.log(this.sum())
+ console.log(this.props)
    console.log('====================================');
 }
   
@@ -35,7 +35,7 @@ handle(){
                 <Header />
                 <div className="tw">
                     <Counter counter = {this.props.todo} />
-                    <Search />
+                    <Search todo = {this.props.todo} />
                 </div>
                 <ul
                     className="items">
@@ -53,15 +53,18 @@ handle(){
 }
 
 
+const mapStateToProps = state => ({
+    todo: state.todos
+})
+
+
+
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(todoActions, dispatch)
 })
 
+
 export default connect(
-    state => {
-        return {
-            todo: state.todos
-        }
-    }, mapDispatchToProps
+   mapStateToProps, mapDispatchToProps
 )(Home)
 
